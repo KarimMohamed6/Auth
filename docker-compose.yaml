@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: auth-pg-db_-connection
+    restart: always
+    environment:
+      POSTGRES_USER: bibo
+      POSTGRES_PASSWORD: bibo
+      POSTGRES_DB: Auth-DB
+    volumes:
+      - auth-pg-db:/data/postgres
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    container_name: auth-pg-db-adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  auth-pg-db:
